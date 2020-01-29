@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Android Intermedio 2</string>
     <string name="test">Test</string>
+
+    <string name="tab_text_1">Speed Dial</string>
+    <string name="tab_text_2">Recents</string>
+    <string name="tab_text_3">Contacts</string>
 </resources>
