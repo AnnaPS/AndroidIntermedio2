@@ -1,6 +1,5 @@
 package com.everis.androidintermedio2.view
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,14 @@ import com.everis.androidintermedio2.R
 import com.everis.androidintermedio2.model.Category
 import kotlinx.android.synthetic.main.item_page.view.*
 
-class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
+class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder>() {
 
-    private val categorys = mutableListOf<Category>()
+    var categorys: List<Category> = emptyList()
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
-       return PagerViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+       return ItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_page,
                 parent,
@@ -27,15 +26,15 @@ class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>(
 
     override fun getItemCount(): Int = categorys.size
 
-    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(categorys[position])
     }
 
-    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
 
         fun bind(category: Category) = with(itemView) {
 
-                tvTitle.text = category.name
+                tvAbout.text = category.name
                 ivImage.setImageResource(category.icon)
                 container.setBackgroundResource(category.color)
 
@@ -44,10 +43,5 @@ class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>(
 
 
 
-    fun refresh(_categorys:List<Category>){
-        categorys.clear()
-        categorys.addAll(_categorys)
-        notifyDataSetChanged()
-    }
 
 }

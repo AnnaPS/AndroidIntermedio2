@@ -1,6 +1,7 @@
 package com.everis.androidintermedio2.data
 
 import com.everis.androidintermedio2.model.Category
+import kotlinx.coroutines.delay
 
 class CategoryRepository {
 
@@ -21,7 +22,7 @@ class CategoryRepository {
 
     )
 
-    fun getCategory(): List<Category>{
+  suspend  fun getCategory(): List<Category>{
         for(i in 0..3){
             categorys.add(Category("Category $i",colors[i],icon[i]))
         }
