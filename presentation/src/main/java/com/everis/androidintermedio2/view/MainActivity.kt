@@ -1,5 +1,6 @@
 package com.everis.androidintermedio2.view
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
          adapter = CategoryListAdapter()
         rvList.adapter = adapter
 
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
                 adapter.categorys = state.categorys
                 adapter.notifyDataSetChanged()
             }
+
+             is MainViewModel.ViewState.Error ->{
+                 tvError.visibility = View.VISIBLE
+                 tvError.text = state.error
+             }
         }
     }
 

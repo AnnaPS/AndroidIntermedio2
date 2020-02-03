@@ -29,6 +29,8 @@ compileTestKotlin {
 
 dependencies {
 
+    implementation project(":common")
+
     implementation androidLib.koin
     implementation androidLib.koinViewModel
     implementation androidLib.koinScope
