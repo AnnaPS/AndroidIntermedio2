@@ -1,4 +1,3 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 
@@ -26,17 +25,11 @@ compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
 
+dependencies {
 
-    dependencies {
-
-        implementation project(":domain")
-
-        implementation androidLib.koin
-        implementation androidLib.koinViewModel
-        implementation androidLib.koinScope
-        implementation androidLib.appCompat
-        // All dependencies
-    }
-
+    implementation androidLib.koin
+    implementation androidLib.koinViewModel
+    implementation androidLib.koinScope
 }

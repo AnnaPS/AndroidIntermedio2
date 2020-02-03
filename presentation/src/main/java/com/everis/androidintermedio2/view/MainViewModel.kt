@@ -1,22 +1,20 @@
 package com.everis.androidintermedio2.view
 
 import androidx.lifecycle.*
-import com.juntadeandalucia.ced.data.Repository.CategoryRepository
-import com.everis.androidintermedio2.domain.GetCategory
-import com.everis.androidintermedio2.model.Category
+import com.juntadeandalucia.ced.domain.Category
+import com.juntadeandalucia.ced.domain.useCases.GetCategory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+private val getCategory: GetCategory
+)
+: ViewModel() {
 
     sealed class  ViewState{
         object Loading : ViewState()
         class ShowList(val categorys: List<Category>): ViewState()
     }
-
-    private val repository =
-        com.juntadeandalucia.ced.data.Repository.CategoryRepository()
-    private val getCategoryRepository = GetCategory(repository)
 
 
     private  val _state = MutableLiveData<ViewState>()
@@ -32,7 +30,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             _state.value = ViewState.Loading
             delay(3000)
-            _state.value =ViewState.ShowList(getCategoryRepository())
+            _state.value =ViewState.ShowList(getCategory.invoke())
         }
     }
 }

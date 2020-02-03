@@ -1,2 +1,2 @@
-include ':app', ':data'
+include ':presentation', ':data', ':domain'
 rootProject.name='Android Intermedio 2'

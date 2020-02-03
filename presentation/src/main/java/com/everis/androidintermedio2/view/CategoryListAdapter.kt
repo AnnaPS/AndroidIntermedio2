@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
-import com.everis.androidintermedio2.model.Category
+import com.juntadeandalucia.ced.domain.Category
 import kotlinx.android.synthetic.main.item_page.view.*
 
 class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder>() {
@@ -35,8 +35,7 @@ class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHol
         fun bind(category: Category) = with(itemView) {
 
                 tvAbout.text = category.name
-                ivImage.setImageResource(category.icon)
-                container.setBackgroundResource(category.color)
+
 
         }
     }
