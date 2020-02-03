@@ -1,4 +1,4 @@
-package com.everis.androidintermedio2.data
+package com.juntadeandalucia.ced.data.Repository
 
 import com.everis.androidintermedio2.model.Category
 import kotlinx.coroutines.delay

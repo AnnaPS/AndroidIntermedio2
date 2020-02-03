@@ -1,7 +1,7 @@
 package com.everis.androidintermedio2.view
 
 import androidx.lifecycle.*
-import com.everis.androidintermedio2.data.CategoryRepository
+import com.juntadeandalucia.ced.data.Repository.CategoryRepository
 import com.everis.androidintermedio2.domain.GetCategory
 import com.everis.androidintermedio2.model.Category
 import kotlinx.coroutines.delay
@@ -14,7 +14,8 @@ class MainViewModel : ViewModel() {
         class ShowList(val categorys: List<Category>): ViewState()
     }
 
-    private val repository = CategoryRepository()
+    private val repository =
+        com.juntadeandalucia.ced.data.Repository.CategoryRepository()
     private val getCategoryRepository = GetCategory(repository)
 
 
