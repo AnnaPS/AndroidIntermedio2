@@ -2,13 +2,12 @@ package com.everis.androidintermedio2.view.login
 
 import android.os.Parcelable
 import androidx.lifecycle.viewModelScope
-import com.everis.androidintermedio2.BaseViewModel
+import com.everis.androidintermedio2.view.base.BaseViewModel
 import com.juntadeandalucia.ced.domain.ErrorData
 import com.juntadeandalucia.ced.domain.UserRequest
 import com.juntadeandalucia.ced.domain.UserResponse
 import com.juntadeandalucia.ced.domain.useCases.LoginUseCase
 import kotlinx.android.parcel.Parcelize
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -19,7 +18,6 @@ class LoginViewModel(
     fun login(user: UserRequest) {
         viewModelScope.launch {
             state.value = LoginState.LoadingState
-            delay(3000)
             val res = getLogin.login(user)
             res.fold(::handleError,::handleSuscces)
 

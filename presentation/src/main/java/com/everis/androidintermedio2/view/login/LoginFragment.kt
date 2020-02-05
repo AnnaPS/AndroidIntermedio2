@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.everis.androidintermedio2.BaseFragment
+import com.everis.androidintermedio2.view.base.BaseFragment
 
 import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.UserRequest
@@ -27,7 +27,6 @@ class LoginFragment : BaseFragment<LoginState>() {
                //TODO
            }
            is LoginState.SuccessState -> {
-               Toast.makeText(context, state.user.name,Toast.LENGTH_SHORT).show()
                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToListProductFragment())
            }
            is LoginState.ErrorState -> {

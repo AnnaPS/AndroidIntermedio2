@@ -2,9 +2,8 @@ package com.everis.androidintermedio2.view.products
 
 import android.os.Parcelable
 import androidx.lifecycle.viewModelScope
-import com.everis.androidintermedio2.BaseViewModel
+import com.everis.androidintermedio2.view.base.BaseViewModel
 import com.juntadeandalucia.ced.domain.ErrorData
-import com.juntadeandalucia.ced.domain.ProductEntityData
 import com.juntadeandalucia.ced.domain.ProductEntityView
 import com.juntadeandalucia.ced.domain.useCases.GetProduct
 import kotlinx.android.parcel.Parcelize

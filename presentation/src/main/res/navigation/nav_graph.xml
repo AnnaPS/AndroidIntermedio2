@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/viewPagerProductFragment"
-        android:name="com.everis.androidintermedio2.ViewPagerProductFragment"
+        android:name="com.everis.androidintermedio2.view.Product.ViewPagerProductFragment"
         android:label="fragment_view_pager_product"
         tools:layout="@layout/fragment_view_pager_product" />
 </navigation>

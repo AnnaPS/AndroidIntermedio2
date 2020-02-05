@@ -1,15 +1,16 @@
-package com.everis.androidintermedio2
+package com.everis.androidintermedio2.view.base
 
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.everis.androidintermedio2.SingleLiveEvent
 
 abstract class BaseViewModel<State: Parcelable>: ViewModel() {
 
-    protected var state: MutableLiveData<State> = MutableLiveData()
+    protected var state: SingleLiveEvent<State> =
+        SingleLiveEvent()
 
     fun config (savedInstanceState: Bundle?) {
         savedInstanceState?.getParcelable<State>(STATE)?.let { state ->
