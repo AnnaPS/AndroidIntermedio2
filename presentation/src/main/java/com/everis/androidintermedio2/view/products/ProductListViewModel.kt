@@ -14,7 +14,7 @@ class ProductListViewModel(): BaseViewModel<ProductListState>() {
 sealed class ProductListState: Parcelable {
 
     @Parcelize
-    object LoadingState(): ProductListState()
+    object LoadingState: ProductListState()
 
     @Parcelize
     class ErrorState(val error: String): ProductListState()
