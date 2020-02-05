@@ -4,34 +4,38 @@ import com.juntadeandalucia.ced.common.Either
 import com.juntadeandalucia.ced.data.Response
 import com.juntadeandalucia.ced.domain.ProductEntityData
 import com.juntadeandalucia.ced.domain.ErrorData
+import com.juntadeandalucia.ced.domain.ProductEntityView
 import com.juntadeandalucia.ced.domain.ProductRepository
 import java.util.*
 
 
 class ProductRepositoryImpl : ProductRepository {
 
-    private val categorys: MutableList<ProductEntityData> = mutableListOf()
+    private val products: MutableList<ProductEntityView> = mutableListOf()
+    private var canDelete = false
+
+    override suspend fun deleteProduct(product: ProductEntityView): Either<ErrorData, List<ProductEntityView>> {
 
 
-    override suspend fun getCategory(error: Boolean): Either<ErrorData, List<ProductEntityData>> {
-        var listImage : MutableList<String> = arrayListOf()
-        listImage.add("")
-        listImage.add("")
-        listImage.add("")
+       products.forEach {
+           if(it == product){
+               products.remove(it)
+               canDelete = true
+           }
+       }
 
-        for (i in 0..3) {
-            categorys.add(ProductEntityData(i, "Titulo $i","Subtitulo $i",listImage))        }
+        val response =  if(canDelete){
+            Response.Suscces(true)
+        }else{
+            Response.Error(false)
+        }
 
-        val response : Response = if(error){
-            Response.Suscces(error)
-        }else
-            Response.Error(error)
-
-        return when(response){
-            is  Response.Suscces -> Either.Right(categorys)
-            is Response.Error -> Either.Left(ErrorData("ERROR"))
+        return when (response){
+            is Response.Suscces -> Either.Right(products)
+            is Response.Error -> Either.Left(ErrorData("Error al borrar producto"))
         }
 
     }
+
 
 }

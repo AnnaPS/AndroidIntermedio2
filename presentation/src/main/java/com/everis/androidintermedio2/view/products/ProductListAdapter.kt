@@ -6,13 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.ProductEntityData
+import com.juntadeandalucia.ced.domain.ProductEntityView
+import kotlinx.android.synthetic.main.fragment_detail_product.view.*
 import kotlinx.android.synthetic.main.item_layout.view.*
+import kotlinx.android.synthetic.main.item_layout.view.tv_description
+import kotlinx.android.synthetic.main.item_layout.view.tv_title
 
 class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolder>() {
 
-    var categorys: List<ProductEntityData> = emptyList()
+    var productList: List<ProductEntityView> = emptyList()
 
-
+    private lateinit var callback : OnItemSelected
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
        return ItemViewHolder(
@@ -24,24 +28,30 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
         )
     }
 
-    override fun getItemCount(): Int = categorys.size
+    override fun getItemCount(): Int = productList.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(categorys[position])
+        holder.bind(productList[position])
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
 
-        fun bind(category: ProductEntityData) = with(itemView) {
+        fun bind(product: ProductEntityView) = with(itemView) {
 
             //iv_item.setImageDrawable(category.imageList[0])
-            tv_title.text = category.title
-            tv_description.text = category.subtitle
+            tv_title.text = product.title
+            tv_description.text = product.subtitle
+
+            bt_remove.setOnClickListener {
+                callback?.onDeleteItem(product)
+            }
 
         }
     }
 
-
+    interface OnItemSelected{
+        fun onDeleteItem(product: ProductEntityView)
+    }
 
 
 }

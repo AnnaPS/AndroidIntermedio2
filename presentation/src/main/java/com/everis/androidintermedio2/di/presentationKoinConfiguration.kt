@@ -14,7 +14,7 @@ class PresentationKoinConfiguration {
         viewModel { MainViewModel(get()) }
         viewModel { LoginViewModel(get()) }
         viewModel { ProductListViewModel() }
-        viewModel { ProducViewModel() }
+        viewModel { ProducViewModel(get()) }
     }
 
 }
