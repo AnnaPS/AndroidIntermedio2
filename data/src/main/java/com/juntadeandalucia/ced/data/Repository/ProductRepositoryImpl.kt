@@ -5,6 +5,7 @@ import com.juntadeandalucia.ced.data.Response
 import com.juntadeandalucia.ced.domain.ProductEntityData
 import com.juntadeandalucia.ced.domain.ErrorData
 import com.juntadeandalucia.ced.domain.ProductRepository
+import java.util.*
 
 
 class ProductRepositoryImpl : ProductRepository {
@@ -13,8 +14,13 @@ class ProductRepositoryImpl : ProductRepository {
 
 
     override suspend fun getCategory(error: Boolean): Either<ErrorData, List<ProductEntityData>> {
+        var listImage : MutableList<String> = arrayListOf()
+        listImage.add("")
+        listImage.add("")
+        listImage.add("")
+
         for (i in 0..3) {
-            categorys.add(ProductEntityData("Category $i", "", emptyList()))
+            categorys.add(ProductEntityData(i, "Titulo $i","Subtitulo $1",listImage))
         }
 
         val response : Response = if(error){

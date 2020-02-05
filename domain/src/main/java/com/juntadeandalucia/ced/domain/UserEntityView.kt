@@ -1,7 +1,8 @@
 package com.juntadeandalucia.ced.domain
 
+import java.io.Serializable
 
-data class UserEntityView (
+class UserEntityView (
     val userName : String,
     var password: String
-)
+): Serializable

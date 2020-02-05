@@ -34,8 +34,7 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
 
         fun bind(category: ProductEntityData) = with(itemView) {
 
-//                tvAbout.text = category.name
-
+                tvAbout.text = category.title
 
         }
     }
