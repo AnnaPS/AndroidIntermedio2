@@ -2,25 +2,38 @@ package com.everis.androidintermedio2.view.login
 
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import com.everis.androidintermedio2.BaseFragment
 
 import com.everis.androidintermedio2.R
+import com.juntadeandalucia.ced.domain.UserRequest
+import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<LoginState>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    override val viewModel by viewModel<LoginViewModel>()
+
+    override fun getLayout(): Int = R.layout.fragment_login
+
+    override fun manageState(state: LoginState) {
+       when(state){
+           is LoginState.SuccessState -> {
+               Toast.makeText(context, state.user.name,Toast.LENGTH_SHORT).show()
+           }
+       }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        bt_login.setOnClickListener {
+            var user = UserRequest(userName = et_user.text.toString(),password = et_password.text.toString())
+            viewModel.login(user)
+        }
+    }
 
 }

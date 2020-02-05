@@ -1,14 +1,39 @@
 package com.everis.androidintermedio2.view.login
 
 import android.os.Parcelable
+import androidx.lifecycle.viewModelScope
 import com.everis.androidintermedio2.BaseViewModel
-import com.juntadeandalucia.ced.domain.UserEntityView
+import com.juntadeandalucia.ced.domain.ErrorData
+import com.juntadeandalucia.ced.domain.UserRequest
+import com.juntadeandalucia.ced.domain.UserResponse
+import com.juntadeandalucia.ced.domain.useCases.LoginUseCase
 import kotlinx.android.parcel.Parcelize
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class LoginViewModel(): BaseViewModel<LoginState>() {
+class LoginViewModel(
+    private val getLogin: LoginUseCase
+): BaseViewModel<LoginState>() {
     override fun init() {}
 
-    //TODO login()
+    fun login(user: UserRequest) {
+        viewModelScope.launch {
+            state.value = LoginState.LoadingState
+            delay(3000)
+            val res = getLogin.login(user)
+            res.fold(::handleError,::handleSuscces)
+
+        }
+    }
+
+
+    private fun handleError(loginError: ErrorData) {
+        state.value = LoginState.ErrorState(loginError.error)
+    }
+
+    private fun handleSuscces(user: UserResponse) {
+        state.value = LoginState.SuccessState(user)
+    }
 }
 
 sealed class LoginState: Parcelable {
@@ -19,5 +44,5 @@ sealed class LoginState: Parcelable {
     class ErrorState(val error: String): LoginState()
 
     @Parcelize
-    class SuccessState (val user: UserEntityView): LoginState()
+    class SuccessState (val user: UserResponse): LoginState()
 }
