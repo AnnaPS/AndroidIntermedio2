@@ -2,10 +2,8 @@ package com.everis.androidintermedio2.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.Observer
 import com.everis.androidintermedio2.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.everis.androidintermedio2.view.products.ProductListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {

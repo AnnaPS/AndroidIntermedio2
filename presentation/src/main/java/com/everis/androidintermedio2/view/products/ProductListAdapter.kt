@@ -1,4 +1,4 @@
-package com.everis.androidintermedio2.view
+package com.everis.androidintermedio2.view.products
 
 import android.view.LayoutInflater
 import android.view.View

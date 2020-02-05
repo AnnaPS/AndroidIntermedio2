@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
-        android:name="com.everis.androidintermedio2.DetailProductFragment"
+        android:name="com.everis.androidintermedio2.view.products.DetailProductFragment"
         android:label="fragment_detail_product"
         tools:layout="@layout/fragment_detail_product" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/vewPagerProductFragment"
-        android:name="com.everis.androidintermedio2.VewPagerProductFragment"
+        android:name="com.everis.androidintermedio2.ViewPagerProductFragment"
         android:label="fragment_vew_pager_product"
-        tools:layout="@layout/fragment_vew_pager_product" />
+        tools:layout="@layout/fragment_view_pager_product" />
 </navigation>
