@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
-import com.juntadeandalucia.ced.domain.Category
+import com.juntadeandalucia.ced.domain.ProductEntityData
 import kotlinx.android.synthetic.main.item_page.view.*
 
 class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder>() {
 
-    var categorys: List<Category> = emptyList()
+    var categorys: List<ProductEntityData> = emptyList()
 
 
 
@@ -32,7 +32,7 @@ class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHol
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
 
-        fun bind(category: Category) = with(itemView) {
+        fun bind(category: ProductEntityData) = with(itemView) {
 
                 tvAbout.text = category.name
 
