@@ -1,6 +1,8 @@
 apply plugin: 'kotlin'
 
+apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
 
 sourceCompatibility = "8"
 targetCompatibility = "8"

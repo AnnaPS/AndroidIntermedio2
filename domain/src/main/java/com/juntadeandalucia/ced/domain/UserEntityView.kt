@@ -1,6 +1,7 @@
 package com.juntadeandalucia.ced.domain
 
-class UserEntityView (
+
+data class UserEntityView (
     val userName : String,
     var password: String
 )

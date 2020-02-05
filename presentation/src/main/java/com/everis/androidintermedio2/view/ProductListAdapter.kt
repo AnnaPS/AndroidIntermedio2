@@ -8,7 +8,7 @@ import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.ProductEntityData
 import kotlinx.android.synthetic.main.item_page.view.*
 
-class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder>() {
+class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolder>() {
 
     var categorys: List<ProductEntityData> = emptyList()
 
@@ -34,7 +34,7 @@ class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.ItemViewHol
 
         fun bind(category: ProductEntityData) = with(itemView) {
 
-                tvAbout.text = category.name
+//                tvAbout.text = category.name
 
 
         }

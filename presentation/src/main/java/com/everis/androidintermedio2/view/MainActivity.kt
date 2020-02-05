@@ -1,11 +1,9 @@
 package com.everis.androidintermedio2.view
 
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.everis.androidintermedio2.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -13,36 +11,36 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel <MainViewModel>()
-    private lateinit var adapter: CategoryListAdapter
+    private lateinit var adapter: ProductListAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         adapter = CategoryListAdapter()
-        rvList.adapter = adapter
-
-        viewModel.getCategory()
-
-
-        viewModel.state.observe(this, Observer (::updateList))
+//         adapter = ProductListAdapter()
+////        rvList.adapter = adapter
+//
+//        viewModel.getCategory()
+//
+//
+//        viewModel.state.observe(this, Observer (::updateList))
     }
 
-     fun updateList(state : MainViewModel.ViewState?) {
-         progress.visibility = if (state is MainViewModel.ViewState.Loading) View.VISIBLE else View.GONE
-
-         when(state){
-            is MainViewModel.ViewState.ShowList ->{
-                adapter.categorys = state.categorys
-                adapter.notifyDataSetChanged()
-            }
-
-             is MainViewModel.ViewState.Error ->{
-                 tvError.visibility = View.VISIBLE
-                 tvError.text = state.error
-             }
-        }
-    }
+//     fun updateList(state : MainViewModel.ViewState?) {
+//         progress.visibility = if (state is MainViewModel.ViewState.Loading) View.VISIBLE else View.GONE
+//
+//         when(state){
+//            is MainViewModel.ViewState.ShowList ->{
+//                adapter.categorys = state.categorys
+//                adapter.notifyDataSetChanged()
+//            }
+//
+//             is MainViewModel.ViewState.Error ->{
+//                 tvError.visibility = View.VISIBLE
+//                 tvError.text = state.error
+//             }
+//        }
+//    }
 
 }
