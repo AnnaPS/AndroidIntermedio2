@@ -4,6 +4,7 @@ package com.everis.androidintermedio2.view.login
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.everis.androidintermedio2.BaseFragment
 
 import com.everis.androidintermedio2.R
@@ -22,8 +23,15 @@ class LoginFragment : BaseFragment<LoginState>() {
 
     override fun manageState(state: LoginState) {
        when(state){
+           is LoginState.LoadingState -> {
+               //TODO
+           }
            is LoginState.SuccessState -> {
                Toast.makeText(context, state.user.name,Toast.LENGTH_SHORT).show()
+               findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToListProductFragment())
+           }
+           is LoginState.ErrorState -> {
+               Toast.makeText(context, state.error,Toast.LENGTH_SHORT).show()
            }
        }
     }
