@@ -2,23 +2,37 @@ package com.everis.androidintermedio2.view.products
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
+import com.everis.androidintermedio2.BaseFragment
 import com.everis.androidintermedio2.R
+import com.juntadeandalucia.ced.domain.ProductEntityView
+import kotlinx.android.synthetic.main.fragment_detail_product.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass.
- */
-class DetailProductFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_product, container, false)
+class DetailProductFragment : BaseFragment<ProductState>() {
+
+    override val viewModel by viewModel<ProducViewModel>()
+
+    override fun getLayout(): Int = R.layout.fragment_detail_product
+    private val args: DetailProductFragmentArgs by navArgs()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initListeners()
+    }
+
+    private fun initListeners() {
+
+        bt_remove.setOnClickListener {
+            var list = emptyList<String>()
+//            var product = ProductEntityView(title = args.productTitle, subtitle = args.productSubtitle, )
+            viewModel.deleteProduct(product)
+        }
+    }
+
+    override fun manageState(state: ProductState) {
     }
 
 

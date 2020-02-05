@@ -16,15 +16,14 @@ class ProducViewModel(
     override fun init() {}
 
     //TODO modifyProduct()
-    //TODO deleteProduct()
 
 
     fun deleteProduct(product: ProductEntityView){
         viewModelScope.launch {
             state.value = ProductState.LoadingState
-            delay(3000)
-//            val res = deleteProduct.deleteProduct(product)
-//            res.fold(::handleError,::handleSuscces)
+            delay(1000)
+            val res = deleteProduct.deleteProduct(product)
+            res.fold(::handleError,::handleSuscces)
 
         }
     }
@@ -36,6 +35,7 @@ class ProducViewModel(
     private fun handleSuscces(productList:List<ProductEntityView>) {
         state.value = ProductState.SuccessDeleteState(productList)
     }
+
 }
 
 sealed class ProductState: Parcelable {

@@ -38,6 +38,14 @@
         <action
             android:id="@+id/action_detailProductFragment_to_viewPagerProductFragment"
             app:destination="@id/viewPagerProductFragment" />
+
+        <argument
+            android:name="productTitle"
+            app:argType="String"
+            />
+        <argument
+            android:name="productSubtitle"
+            app:argType="String"/>
         
     </fragment>
 

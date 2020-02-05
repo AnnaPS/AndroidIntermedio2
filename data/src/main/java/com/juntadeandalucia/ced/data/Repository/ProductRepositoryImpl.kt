@@ -14,28 +14,27 @@ class ProductRepositoryImpl : ProductRepository {
     private val products: MutableList<ProductEntityData> = mutableListOf()
     private var canDelete = false
 
-//    override suspend fun deleteProduct(product: ProductEntityView): Either<ErrorData, List<ProductEntityView>> {
-//
-//
-//       products.forEach {
-//           if(it == product){
-//               products.remove(it)
-//               canDelete = true
-//           }
-//       }
-//
-//        val response =  if(canDelete){
-//            Response.Suscces(true)
-//        }else{
-//            Response.Error(false)
-//        }
-//
-//        return when (response){
-//            is Response.Suscces -> Either.Right(products)
-//            is Response.Error -> Either.Left(ErrorData("Error al borrar producto"))
-//        }
-//
-//    }
+    override suspend fun deleteProduct(product: ProductEntityData): Either<ErrorData, List<ProductEntityData>> {
+
+       products.forEach {
+           if(it == product){
+               products.remove(it)
+               canDelete = true
+           }
+       }
+
+        val response =  if(canDelete){
+            Response.Suscces(true)
+        }else{
+            Response.Error(false)
+        }
+
+        return when (response){
+            is Response.Suscces -> Either.Right(products)
+            is Response.Error -> Either.Left(ErrorData("Error al borrar producto"))
+        }
+
+    }
 
     override suspend fun getCategory(error: Boolean): Either<ErrorData, List<ProductEntityData>> {
         var listImage : MutableList<String> = arrayListOf()
