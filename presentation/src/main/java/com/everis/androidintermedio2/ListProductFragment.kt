@@ -4,6 +4,7 @@ package com.everis.androidintermedio2
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.everis.androidintermedio2.view.base.BaseFragment
 import com.everis.androidintermedio2.view.products.ProductListAdapter
@@ -27,6 +28,11 @@ class ListProductFragment : BaseFragment<ProductListState>() {
             is ProductListState.SuccessState ->{
                 rv_elements.layoutManager = LinearLayoutManager(context)
                 rv_elements.adapter= adapter
+                adapter.also {
+                    it.itemPressed = {
+                        findNavController().navigate(ListProductFragmentDirections.actionListProductFragmentToDetailProductFragment())
+                    }
+                }
                 adapter.categorys = state.productList
             }
         }

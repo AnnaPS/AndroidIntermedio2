@@ -38,7 +38,7 @@
         <action
             android:id="@+id/action_detailProductFragment_to_viewPagerProductFragment"
             app:destination="@id/viewPagerProductFragment" />
-        
+
     </fragment>
 
     <fragment

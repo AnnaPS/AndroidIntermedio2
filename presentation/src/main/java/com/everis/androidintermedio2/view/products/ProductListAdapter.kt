@@ -3,6 +3,7 @@ package com.everis.androidintermedio2.view.products
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.ProductEntityData
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.item_layout.view.*
 class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolder>() {
 
     var categorys: List<ProductEntityView> = emptyList()
-
+    var itemPressed : ((ProductEntityView)-> Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,6 +30,7 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(categorys[position])
+
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
@@ -38,6 +40,10 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
             //iv_item.setImageDrawable(category.imageList[0])
             tv_title.text = category.title
             tv_description.text = category.subtitle
+
+            itemView.setOnClickListener {
+                itemPressed?.invoke(categorys[position])
+            }
 
         }
     }
