@@ -20,8 +20,7 @@ class ProductRepositoryImpl : ProductRepository {
         listImage.add("")
 
         for (i in 0..3) {
-            categorys.add(ProductEntityData(i, "Titulo $i","Subtitulo $1",listImage))
-        }
+            categorys.add(ProductEntityData(i, "Titulo $i","Subtitulo $i",listImage))        }
 
         val response : Response = if(error){
             Response.Suscces(error)
