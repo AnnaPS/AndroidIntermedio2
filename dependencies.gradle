@@ -1,6 +1,6 @@
 ext {
     androidVersion = "1.1.0"
-    androidConstraintVersion = "1.1.3"
+    androidConstraintVersion = "2.0.0-beta4"
     androidLifeCycleVersion = "2.2.0-rc03"
     viewPager2 = "1.0.0"
     koin = "2.0.1"

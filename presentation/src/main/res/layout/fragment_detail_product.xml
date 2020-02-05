@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_detail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/motion_scene">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_image"
@@ -36,7 +36,7 @@
         android:layout_margin="5dp"
         android:textStyle="bold"
         android:textSize="18dp"
-        tools:text="***Título del producto" />
+        android:text="***Título del producto" />
 
     <TextView
         android:id="@+id/tv_description"
@@ -47,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="5dp"
         android:textSize="14dp"
-        tools:text="***Esta es una prueba de descripción del producto ya que todo es una simulación del servicio pero máximo mostramos dos líneas." />
+        android:textAlignment="center"
+        android:text="***Esta es una prueba de descripción del producto ya que todo es una simulación del servicio pero máximo mostramos dos líneas." />
 
     <Button
         android:id="@+id/bt_edit"
@@ -68,4 +69,4 @@
         android:text="***Eliminar" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
