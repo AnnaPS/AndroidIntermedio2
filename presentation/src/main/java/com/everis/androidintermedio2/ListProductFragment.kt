@@ -6,18 +6,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.everis.androidintermedio2.view.products.ProductListAdapter
+import com.everis.androidintermedio2.view.products.ProductListState
+import com.everis.androidintermedio2.view.products.ProductListViewModel
+import kotlinx.android.synthetic.main.fragment_list_product.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class ListProductFragment : Fragment() {
+class ListProductFragment : BaseFragment<ProductListState>() {
+    private var adapter = ProductListAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_product, container, false)
+    override val viewModel by viewModel<ProductListViewModel>()
+
+    override fun getLayout(): Int = R.layout.fragment_list_product
+
+    override fun manageState(state: ProductListState) {
+        when(state){
+            is ProductListState.SuccessState ->{
+                rv_elements.layoutManager = LinearLayoutManager(context)
+                rv_elements.adapter= adapter
+                adapter.productList = state.productList
+            }
+        }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.getProducts()
     }
 
 

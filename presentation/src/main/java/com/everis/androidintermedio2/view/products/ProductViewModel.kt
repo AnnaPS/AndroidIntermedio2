@@ -23,8 +23,8 @@ class ProducViewModel(
         viewModelScope.launch {
             state.value = ProductState.LoadingState
             delay(3000)
-            val res = deleteProduct.deleteProduct(product)
-            res.fold(::handleError,::handleSuscces)
+//            val res = deleteProduct.deleteProduct(product)
+//            res.fold(::handleError,::handleSuscces)
 
         }
     }

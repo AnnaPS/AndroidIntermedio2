@@ -5,10 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
-import com.juntadeandalucia.ced.domain.ProductEntityData
 import com.juntadeandalucia.ced.domain.ProductEntityView
 import kotlinx.android.synthetic.main.fragment_detail_product.view.*
-import kotlinx.android.synthetic.main.item_layout.view.*
 import kotlinx.android.synthetic.main.item_layout.view.tv_description
 import kotlinx.android.synthetic.main.item_layout.view.tv_title
 
@@ -42,9 +40,9 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
             tv_title.text = product.title
             tv_description.text = product.subtitle
 
-            bt_remove.setOnClickListener {
-                callback?.onDeleteItem(product)
-            }
+//            bt_remove.setOnClickListener {
+//                callback?.onDeleteItem(product)
+//            }
 
         }
     }
