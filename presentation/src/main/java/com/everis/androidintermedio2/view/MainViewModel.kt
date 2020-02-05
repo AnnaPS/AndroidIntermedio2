@@ -1,20 +1,20 @@
 package com.everis.androidintermedio2.view
 
 import androidx.lifecycle.*
-import com.juntadeandalucia.ced.domain.Category
-import com.juntadeandalucia.ced.domain.CategoryError
-import com.juntadeandalucia.ced.domain.useCases.GetCategory
+import com.juntadeandalucia.ced.domain.ProductEntityData
+import com.juntadeandalucia.ced.domain.ErrorData
+import com.juntadeandalucia.ced.domain.useCases.GetProduct
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-private val getCategory: GetCategory
+private val getCategory: GetProduct
 )
 : ViewModel() {
 
     sealed class  ViewState{
         object Loading : ViewState()
-        class ShowList(val categorys: List<Category>): ViewState()
+        class ShowList(val categorys: List<ProductEntityData>): ViewState()
         class Error(val error: String): ViewState()
     }
 
@@ -38,11 +38,11 @@ private val getCategory: GetCategory
         }
     }
 
-    private fun handleError(categoryError: CategoryError) {
+    private fun handleError(categoryError: ErrorData) {
         _state.value = ViewState.Error(categoryError.error)
     }
 
-    private fun handleSuscces(list: List<Category>) {
+    private fun handleSuscces(list: List<ProductEntityData>) {
         _state.value =ViewState.ShowList(list)
     }
 }
