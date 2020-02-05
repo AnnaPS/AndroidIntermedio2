@@ -1,7 +1,7 @@
 package com.everis.androidintermedio2.view.products
 
 import android.os.Parcelable
-import com.everis.androidintermedio2.BaseViewModel
+import com.everis.androidintermedio2.view.base.BaseViewModel
 import com.juntadeandalucia.ced.domain.ProductEntityView
 import kotlinx.android.parcel.Parcelize
 

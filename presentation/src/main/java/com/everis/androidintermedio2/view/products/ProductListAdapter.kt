@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.ProductEntityData
+import com.juntadeandalucia.ced.domain.ProductEntityView
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolder>() {
 
-    var categorys: List<ProductEntityData> = emptyList()
+    var categorys: List<ProductEntityView> = emptyList()
 
 
 
@@ -32,7 +33,7 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
 
-        fun bind(category: ProductEntityData) = with(itemView) {
+        fun bind(category: ProductEntityView) = with(itemView) {
 
             //iv_item.setImageDrawable(category.imageList[0])
             tv_title.text = category.title

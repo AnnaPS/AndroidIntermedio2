@@ -10,10 +10,11 @@ import java.util.*
 
 class ProductRepositoryImpl : ProductRepository {
 
-    private val categorys: MutableList<ProductEntityData> = mutableListOf()
+    private var categorys: MutableList<ProductEntityData> = mutableListOf()
 
 
     override suspend fun getCategory(error: Boolean): Either<ErrorData, List<ProductEntityData>> {
+        categorys = arrayListOf()
         var listImage : MutableList<String> = arrayListOf()
         listImage.add("")
         listImage.add("")
