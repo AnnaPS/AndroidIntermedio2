@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.everis.androidintermedio2.R
 import com.juntadeandalucia.ced.domain.ProductEntityData
-import kotlinx.android.synthetic.main.item_page.view.*
+import kotlinx.android.synthetic.main.item_layout.view.*
 
 class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolder>() {
 
@@ -17,7 +17,7 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
        return ItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_page,
+                R.layout.item_layout,
                 parent,
                 false
             )
@@ -34,7 +34,9 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ItemViewHolde
 
         fun bind(category: ProductEntityData) = with(itemView) {
 
-                tvAbout.text = category.title
+            //iv_item.setImageDrawable(category.imageList[0])
+            tv_title.text = category.title
+            tv_description.text = category.subtitle
 
         }
     }
